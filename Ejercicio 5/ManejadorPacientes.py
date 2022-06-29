@@ -17,6 +17,23 @@ class ManejadorPacientes:
     def actualizarPaciente(self, paciente):
         indice = self.obtenerIndicePaciente(paciente)
         self.__listaPacientes[indice] = paciente
+    def calcularIMC(self, paciente):
+        indice = self.obtenerIndicePaciente(paciente)
+        alt = float(self.__listaPacientes[indice].getAltura())
+        peso = float(self.__listaPacientes[indice].getPeso())
+        imc = peso / (alt * alt)
+        return imc
+    def estado(self, imc):
+        estado = ''
+        if imc > 0 and imc < 18.5:
+            estado += "Peso Inferior al Normal"
+        elif imc > 18.5 and imc < 25:
+            estado += "Peso Normal"
+        elif imc > 25 and imc < 30:
+            estado += "Peso Superior al Normal"
+        else:
+            estado += "Obesidad"
+        return estado
     def obtenerIndicePaciente(self, paciente):
         bandera = False
         i = 0

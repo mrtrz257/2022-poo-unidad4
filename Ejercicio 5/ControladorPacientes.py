@@ -1,6 +1,7 @@
 from ManejadorPacientes import ManejadorPacientes
 from MostrarPacientes import MostrarPacientes
 from NuevoPaciente import NuevoPaciente
+from mostrarIMC import mostrarIMC
 
 class ControladorPacientes(object):
     def __init__(self, repo, vista):
@@ -36,6 +37,13 @@ class ControladorPacientes(object):
         self.pacientes.pop(self.seleccion)
         self.vista.borrarPaciente(self.seleccion)
         self.seleccion=-1
+    def calcularIMC(self):
+        if self.seleccion == -1:
+            return
+        paciente = self.pacientes[self.seleccion]
+        calculoIMC = self.repo.calcularIMC(paciente)
+        estado = self.repo.estado(calculoIMC)
+        imc = mostrarIMC(self.vista).mostrar()
     def start(self):
         for elemento in self.pacientes:
             self.vista.agregarPaciente(elemento)

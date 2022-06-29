@@ -10,11 +10,11 @@ class NuevoPaciente(tk.Toplevel):
         self.form.pack(padx=10, pady=10)
         self.btn_add.pack(pady=10)
     def confirmar(self):
-        self.contacto = self.form.crearPacienteDesdeForm()
-        if self.contacto:
+        self.paciente = self.form.crearPacienteDesdeForm()
+        if self.paciente:
             self.destroy()
     def mostrar(self):
         self.grab_set()
         self.wait_window()
-        return self.contacto
+        return self.paciente
     

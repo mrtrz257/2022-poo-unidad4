@@ -7,8 +7,8 @@
                 "apellido": "Ag\u00fcero",
                 "nombre": "Alex",
                 "telefono": "(264)4120257",
-                "altura": "1,87",
-                "peso": "75"
+                "altura": "1.87",
+                "peso": "76"
             }
         },
         {
@@ -17,18 +17,8 @@
                 "apellido": "Romanello",
                 "nombre": "Giuliano",
                 "telefono": "(264)4593734",
-                "altura": "1,90",
+                "altura": "1.90",
                 "peso": "80"
-            }
-        },
-        {
-            "__class__": "Paciente",
-            "__atributos__": {
-                "apellido": "Ruiz",
-                "nombre": "Martin",
-                "telefono": "(264)5597232",
-                "altura": "173",
-                "peso": "57"
             }
         }
     ]

@@ -17,6 +17,7 @@ class MostrarPacientes(tk.Tk):
         self.list.bind_double_click(ctrl.seleccionarPaciente)
         self.form.bind_save(ctrl.modificarPaciente)
         self.form.bind_delete(ctrl.borrarPaciente)
+        self.form.bind_IMC(ctrl.calcularIMC)
     def agregarPaciente(self, paciente):
         self.list.insertar(paciente)
     def modificarPaciente(self, paciente, index):

@@ -17,6 +17,12 @@ class RepositorioPacientes(object):
     def modificarPaciente(self, paciente):
         self.__manejador.actualizarPaciente(paciente)
         return paciente
+    def calcularIMC(self, paciente):
+        result = self.__manejador.calcularIMC(paciente)
+        return result
+    def estado(self, imc):
+        estado = self.__manejador.estado(imc)
+        return estado
     def borrarPaciente(self, paciente):
         self.__manejador.borrarPaciente(paciente)
     def grabarDatos(self):
