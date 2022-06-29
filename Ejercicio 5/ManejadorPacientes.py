@@ -21,7 +21,8 @@ class ManejadorPacientes:
         indice = self.obtenerIndicePaciente(paciente)
         alt = float(self.__listaPacientes[indice].getAltura())
         peso = float(self.__listaPacientes[indice].getPeso())
-        imc = peso / (alt * alt)
+        imc2 = peso / (alt * alt)
+        imc = round(imc2, 2)
         return imc
     def estado(self, imc):
         estado = ''
@@ -33,6 +34,7 @@ class ManejadorPacientes:
             estado += "Peso Superior al Normal"
         else:
             estado += "Obesidad"
+        print(estado)
         return estado
     def obtenerIndicePaciente(self, paciente):
         bandera = False

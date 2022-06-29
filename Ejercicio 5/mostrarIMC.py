@@ -2,21 +2,22 @@ import tkinter as tk
 from Paciente import Paciente
 
 class mostrarIMC(tk.Toplevel):
-    fields = ("IMC", "Composición Corporal")
-    def __init__(self, master, **kwargs):
-        super().__init__(master, **kwargs)
-        self.paciente = None
-        self.frame = tk.Frame(self)
-        self.entries = list(map(self.crearCampo, enumerate(self.fields)))
-        self.frame.pack(pady=20, padx=20)
-    def crearCampo(self, field):
-        position, text = field
-        label = tk.Label(self.frame, text=text)
-        entry = tk.Entry(self.frame, width=25, state="readonly")
-        label.grid(row=position, column=0)
-        entry.grid(row=position, column=1)
-        return entry
+    def __init__(self, parent, imc, estado):
+        super().__init__(parent)
+        self.imc = tk.StringVar()
+        self.estado = tk.StringVar()
+        self.imc.set('{}'.format(imc))
+        self.estado.set('{}'.format(estado))
+        self.imcLbl = tk.Label(self, text="IMC")
+        self.estadoLbl = tk.Label(self, text="Composicion Corporal")
+        self.imcEntry = tk.Entry(self, textvariable=self.imc, state="readonly")
+        self.estadoEntry = tk.Entry(self, textvariable=self.estado, state="readonly")
+        self.volverBtn = tk.Button(self, text="Volver", command=self.destroy)
+        self.imcLbl.grid(column=0, row=0, padx=5)
+        self.estadoLbl.grid(column=0, row=1, padx=5)
+        self.imcEntry.grid(column=1, row=0, padx=10)
+        self.estadoEntry.grid(column=1, row=1, padx=10)
+        self.volverBtn.grid(column=0, row=2, pady=4)
     def mostrar(self):
         self.grab_set()
         self.wait_window()
-        return self.paciente

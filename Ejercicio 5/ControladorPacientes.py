@@ -43,7 +43,7 @@ class ControladorPacientes(object):
         paciente = self.pacientes[self.seleccion]
         calculoIMC = self.repo.calcularIMC(paciente)
         estado = self.repo.estado(calculoIMC)
-        imc = mostrarIMC(self.vista).mostrar()
+        imc = mostrarIMC(self.vista, calculoIMC, estado).mostrar()
     def start(self):
         for elemento in self.pacientes:
             self.vista.agregarPaciente(elemento)
