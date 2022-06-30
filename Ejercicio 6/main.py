@@ -1,23 +1,30 @@
-from tkinter import *
-from tkinter import ttk, font
+from RepositorioProvincias import RepositorioProvincias
+from MostrarProvincia import MostrarProvincia
+from Controlador import ControladorProvincia
+from objectEncoder import objectEncoder
+
 from api import API
 
-class Aplicacion():
-    __ventana = None
-    def __init__(self):
-        self.__ventana = Tk()
-
-def testApp():
-    mi_app = Aplicacion()
-    return 0
-
-if __name__ == '__main__':
-    #testApp()
+def api():
     consultaAPI = API()
     ciudad = input("Ciudad: ")
     consultaAPI.run(ciudad)
     print(consultaAPI.getResultado())
     r = consultaAPI.getResultado()
-    print('Temperatura: {}'.format(r['main']['temp']))
-    print('Sensacion Termica: {}'.format(r['main']['feels_like']))
-    print('Humedad: {}'.format(r['main']['humidity']))
+    temp = ((r['main']['temp']))
+    sens = ((r['main']['feels_like']))
+    hum = ((r['main']['humidity']))
+    print("{}\n{}\n{}".format(temp, sens, hum))
+
+def main():
+    conn = objectEncoder('datos.json')
+    repo = RepositorioProvincias(conn)
+    lista = MostrarProvincia()
+    ctrl = ControladorProvincia(repo, lista)
+    lista.setControlador(ctrl)
+    ctrl.start()
+    ctrl.salirGrabarDatos()
+
+if __name__ == '__main__':
+    #api()
+    main()
